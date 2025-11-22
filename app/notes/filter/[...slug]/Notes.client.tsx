@@ -9,8 +9,6 @@ import css from './NotesPage.module.css';
 import SearchBox from '@/components/SearchBox/SearchBox';
 import Pagination from '@/components/Pagination/Pagination';
 import NoteList from '@/components/NoteList/NoteList';
-import Modal from '@/components/ModalCreate/ModalCreate';
-import NoteForm from '@/components/NoteForm/NoteForm';
 import { Tag } from '@/types/note';
 
 interface Props {
@@ -21,7 +19,6 @@ export default function NoteClient({ tag }: Props) {
   const [page, setPage] = useState(1);
   const [query, setQuery] = useState('');
   const [debouncedValue] = useDebounce(query, 3000);
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const { data, isSuccess, isLoading, isError } = useQuery({
     queryKey: ['notes', debouncedValue, page, tag],
@@ -35,9 +32,6 @@ export default function NoteClient({ tag }: Props) {
     setQuery(e.target.value);
     setPage(1);
   };
-
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
 
   return (
     <>
@@ -53,20 +47,10 @@ export default function NoteClient({ tag }: Props) {
               onPageChange={(selectedPage) => setPage(selectedPage)}
             />
           )}
-
           {isLoading && <p>Loading...</p>}
           {isError && <p>Failed to load notes</p>}
-
-          <button className={css.button} onClick={openModal}>
-            Create note +
-          </button>
         </header>
         {isSuccess && data.notes.length > 0 && <NoteList notes={data.notes} />}
-        {isModalOpen && (
-          <Modal onClose={closeModal}>
-            <NoteForm onClose={closeModal} />
-          </Modal>
-        )}
       </div>
     </>
   );

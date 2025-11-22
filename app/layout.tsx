@@ -1,19 +1,27 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { Roboto } from 'next/font/google';
+// import { Geist, Geist_Mono } from 'next/font/google';
 import TanStackProvider from '@/components/TanStackProvider/TanStackProvider';
 import Footer from '../components/Footer/Footer';
 import Header from '../components/Header/Header';
 import './globals.css';
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
+const roboto = Roboto({
   subsets: ['latin'],
+  weight: ['400', '700'],
+  variable: '--font-roboto',
+  display: 'swap',
 });
 
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
-});
+// const geistSans = Geist({
+//   variable: '--font-geist-sans',
+//   subsets: ['latin'],
+// });
+
+// const geistMono = Geist_Mono({
+//   variable: '--font-geist-mono',
+//   subsets: ['latin'],
+// });
 
 export const metadata: Metadata = {
   title: 'Note HUB - home',
@@ -40,15 +48,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      {/* <body className={`${geistSans.variable} ${geistMono.variable}`}> */}
+      <body className={roboto.variable}>
         <TanStackProvider>
           <Header />
-
           <main>
             {children}
             {modal}
           </main>
-
           <Footer />
         </TanStackProvider>
         <div id="modal-root" />

@@ -2,6 +2,10 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+  width: 50%;
+  align-items: left;
+  padding: 32px 24px;
+  /* padding: 0 auto; */
 }
 
 .formGroup {

@@ -4,7 +4,10 @@ import css from './SidebarNotes.module.css';
 const NotesSidebar = () => {
   const tags = ['Work', 'Personal', 'Meeting', 'Shopping', 'Todo'];
   return (
-    <div>
+    <div className={css.subContainer}>
+      <Link href="/notes/action/create" className={css.createLink}>
+        Create note
+      </Link>
       <ul className={css.menuList}>
         <li className={css.menuItem}>
           <Link href={`/notes/filter/all`} className={css.menuLink}>

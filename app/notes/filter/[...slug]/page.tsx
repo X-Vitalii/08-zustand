@@ -16,12 +16,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
 
   return {
-    title: `NotesList of: ${slug[0]}`,
-    description: `Total Notes of ${slug[0]} is ${slug.length}`,
+    title: `Notes filtered by: ${slug[0]}`,
+    description: `List of Notes by category: ${slug[0]}`,
     openGraph: {
-      title: `NotesList of: ${slug[0]}`,
-      description: `You have ${slug.length} Notes of ${slug[0]}`,
-      url: `https://notehub.com/notes/${slug[0]}`,
+      title: `Notes filtered by: ${slug[0]}`,
+      description: `List of Notes by category: ${slug[0]}`,
+      url: `https://08-zustand-indol-three.vercel.app/notes/filter/${slug[0]}`,
       images: {
         url: 'https://ac.goit.global/fullstack/react/notehub-og-meta.jpg',
         width: 1200,
