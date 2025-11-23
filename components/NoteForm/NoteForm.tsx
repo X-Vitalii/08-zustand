@@ -6,7 +6,7 @@ import { ChangeEvent } from 'react';
 import css from './NoteForm.module.css';
 import type { AddNote, Tag } from '../../types/note';
 import { createNote } from '../../lib/api';
-import { useNoteDraft } from '@/lib/noteStore';
+import { useNoteDraft } from '@/lib/store/noteStore';
 
 interface Props {
   tags: Tag[];
