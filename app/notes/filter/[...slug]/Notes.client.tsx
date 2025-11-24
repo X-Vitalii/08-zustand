@@ -10,6 +10,7 @@ import SearchBox from '@/components/SearchBox/SearchBox';
 import Pagination from '@/components/Pagination/Pagination';
 import NoteList from '@/components/NoteList/NoteList';
 import { Tag } from '@/types/note';
+import Link from 'next/link';
 
 interface Props {
   tag?: Tag;
@@ -49,6 +50,9 @@ export default function NoteClient({ tag }: Props) {
           )}
           {isLoading && <p>Loading...</p>}
           {isError && <p>Failed to load notes</p>}
+          <Link href="/notes/action/create" className={css.createLink}>
+            Create note
+          </Link>
         </header>
         {isSuccess && data.notes.length > 0 && <NoteList notes={data.notes} />}
       </div>
